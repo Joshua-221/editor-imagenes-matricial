@@ -399,8 +399,16 @@ return resultado;
  */
 function voltearVertical(matriz) {
   // TODO: Implementar volteo vertical
-  
-  return []; // REEMPLAZAR
+
+// 1. Crear una copia de la matriz original para no modificar la entrada
+const resultado = copiarMatriz(matriz);
+
+// 2. Voltear la imagen verticalmente invirtiendo el orden de las filas
+//    reverse() invierte el arreglo completo de filas
+resultado.reverse();
+
+// 3. Devolver la matriz volteada verticalmente
+return resultado;
 }
 
 /**
