@@ -368,11 +368,18 @@ return resultado;
  */
 function voltearHorizontal(matriz) {
   // TODO: Implementar volteo horizontal
-  
-  // Pista: Puedes usar .reverse() en cada fila
-  // o construir manualmente invirtiendo el orden
-  
-  return []; // REEMPLAZAR
+// 1. Crear una copia de la matriz original para no modificarla directamente
+const resultado = copiarMatriz(matriz);
+
+// 2. Recorrer cada fila y voltearla usando reverse()
+for (let i = 0; i < resultado.length; i++) {
+
+  // invierte el orden de los elementos de la fila
+  resultado[i].reverse();
+}
+
+// 3. Devolver la matriz ya volteada horizontalmente
+return resultado;
 }
 
 /**
