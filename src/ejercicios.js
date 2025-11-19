@@ -297,8 +297,6 @@ for (let i = 0; i < resultado.length; i++) {
     resultado[i][j].r = 255 - matriz[i][j].r;
     resultado[i][j].g = 255 - matriz[i][j].g;
     resultado[i][j].b = 255 - matriz[i][j].b;
-
-    
   }
 }
 // 3. Devolver la matriz final con los colores invertidos
@@ -321,15 +319,31 @@ return resultado;
  */
 function convertirEscalaGrises(matriz) {
   // TODO: Implementar conversión a escala de grises
-  
-  // Para cada pixel:
-  // 1. Calcular el valor de gris
-  // const gris = 0.299 * pixel.r + 0.587 * pixel.g + 0.114 * pixel.b;
-  // 
-  // 2. Asignar ese valor a los tres canales
-  // pixelNuevo = {r: gris, g: gris, b: gris, a: pixel.a}
-  
-  return []; // REEMPLAZAR
+
+  // 1. Crear una copia de la matriz original 
+const resultado = copiarMatriz(matriz);
+
+// 2. Recorrer cada píxel y calcular su valor en escala de grises
+for (let i = 0; i < resultado.length; i++) {
+  for (let j = 0; j < resultado[i].length; j++) {
+    
+    // Obtener el píxel original
+    const pixel = matriz[i][j];
+
+    // Calcular el gris usando el promedio ponderado
+    const gris = 0.299 * pixel.r + 0.587 * pixel.g + 0.114 * pixel.b;
+
+    // Asignar el valor de gris a los canales R, G y B
+    resultado[i][j].r = gris;
+    resultado[i][j].g = gris;
+    resultado[i][j].b = gris;
+
+    // El canal alpha se mantiene igual 
+  }
+}
+
+// 3. Devolver la matriz convertida a escala de grises
+return resultado;
 }
 
 // ============================================
