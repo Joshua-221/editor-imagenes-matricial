@@ -541,10 +541,36 @@ function mezclarImagenes(matriz1, matriz2, factor) {
  */
 function aplicarSepia(matriz) {
   // TODO: Implementar filtro sepia
-  
-  return []; // REEMPLAZAR
+// 1. Crear una copia de la matriz para no modificar la original
+const resultado = copiarMatriz(matriz);
+
+// 2. Recorrer cada pixel y aplicar la fórmula sepia
+for (let i = 0; i < resultado.length; i++) {
+  for (let j = 0; j < resultado[i].length; j++) {
+    const p = matriz[i][j];
+
+    // Aplicar transformación sepia a cada canal
+    const nuevoR = limitarValorColor(
+      0.393 * p.r + 0.769 * p.g + 0.189 * p.b
+    );
+    const nuevoG = limitarValorColor(
+      0.349 * p.r + 0.686 * p.g + 0.168 * p.b
+    );
+    const nuevoB = limitarValorColor(
+      0.272 * p.r + 0.534 * p.g + 0.131 * p.b
+    );
+
+    // Asignar los nuevos valores
+    resultado[i][j].r = nuevoR;
+    resultado[i][j].g = nuevoG;
+    resultado[i][j].b = nuevoB;
+    // El canal alpha se mantiene igual
+  }
 }
 
+// 3. Devolver la imagen con el efecto sepia aplicado
+return resultado;
+}
 /**
  * Ejercicio 4.3: Detectar bordes (simplificado) (8 puntos)
  * 
