@@ -432,12 +432,30 @@ return resultado;
  */
 function rotar90Grados(matriz) {
   // TODO: Implementar rotación de 90 grados
-  
-  // Opción 1: Hacer transpuesta manualmente considerando que son objetos
-  // Opción 2: Construir directamente la matriz rotada
-  //   nuevoPixel[j][alto - 1 - i] = pixelOriginal[i][j]
-  
-  return []; // REEMPLAZAR
+// Obtenemos dimensiones originales
+const alto = matriz.length;        // número de filas
+const ancho = matriz[0].length;    // número de columnas
+
+// Nueva matriz rotada: tendrá dimensiones invertidas → ancho × alto
+const rotada = [];
+
+// Recorremos columna por columna de la original
+for (let j = 0; j < ancho; j++) {
+  // Nueva fila que construiremos para la matriz rotada
+  const nuevaFila = [];
+
+  // Recorremos filas de abajo hacia arriba (por eso i va decreciendo)
+  for (let i = alto - 1; i >= 0; i--) {
+    // El pixel original [i][j] se coloca como nuevo pixel en la fila formada
+    nuevaFila.push(matriz[i][j]);
+  }
+
+  // Añadimos la nueva fila a la matriz final
+  rotada.push(nuevaFila);
+}
+
+// Devolvemos la imagen ya rotada 90° hacia la derecha
+return rotada;
 }
 
 // ============================================
